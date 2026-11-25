@@ -1,0 +1,79 @@
+@layer tokens, base, book, components;
+
+@layer tokens {
+  :root {
+    --ink: #1f2d4d;
+    --ink-soft: #55607a;
+    --paper: #fffdf7;
+    --paper-2: #f1f4fb;
+    --paper-edge: #dbe1ee;
+    --mat: #eaf3fb;
+    --blue: #3260d8;
+    --blue-deep: #2546b8;
+    --sun: #ffd34a;
+    --coral: #ff7a59;
+    --right: #1f8a55;
+    --right-bg: #dcf5e6;
+    --wrong: #c2412f;
+    --wrong-bg: #ffe5de;
+    --shadow: rgba(40, 60, 120, 0.25);
+    --backdrop: radial-gradient(120% 80% at 50% 0%, #e4f1ff 0%, #f3f7ff 45%, #fff4e2 100%);
+    --display: 'Fredoka Variable', 'Rubik', system-ui, sans-serif;
+    --text: 'Literata Variable', Georgia, serif;
+  }
+
+  :root[data-theme='night'] {
+    --ink: #eaf0ff;
+    --ink-soft: #b3bfdc;
+    --paper: #1e2a45;
+    --paper-2: #27355a;
+    --paper-edge: #3a4a72;
+    --mat: #141d33;
+    --right: #8ee0ad;
+    --right-bg: #1d4a39;
+    --wrong: #ffb3a0;
+    --wrong-bg: #57302d;
+    --shadow: rgba(0, 0, 0, 0.5);
+    --backdrop: radial-gradient(120% 80% at 50% 0%, #26365e 0%, #18223d 60%, #121a2e 100%);
+    color-scheme: dark;
+  }
+
+  /* Pages inside the 3D book are always printed paper, even at night. */
+  .page3d {
+    --ink: #1f2d4d;
+    --ink-soft: #55607a;
+    --paper: #fffaf0;
+    --paper-2: #f3eedf;
+    --paper-edge: #e2dac6;
+    --right: #1f8a55;
+    --right-bg: #dcf5e6;
+    --wrong: #c2412f;
+    --wrong-bg: #ffe5de;
+    color-scheme: light;
+  }
+}
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: var(--text);
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--ink);
+    background: var(--backdrop) fixed, var(--mat);
+    min-height: 100dvh;
+  }
+
+  h1, h2, h3, h4 { font-family: var(--display); line-height: 1.15; margin: 1.3em 0 0.5em; text-wrap: balance; }
+  h2 { font-size: 1.75rem; font-weight: 650; margin-top: 0; }
+  h3 { font-size: 1.18rem; font-weight: 600; }
+  h4 { font-size: 1.02rem; font-weight: 600; }
+  p { margin: 0 0 0.85em; }
+  a { color: inherit; }
+  button, input, textarea { font: inherit; color: inherit; }
+  [hidden] { display: none !important; }
+  :focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}
